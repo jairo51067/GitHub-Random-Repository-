@@ -13,4 +13,8 @@ Las imagenes corresponden a una busqueda aleatoria. Para que les funcione corect
 
 Visita la muestra: https://jairo51067.github.io/GitHub-Random-Repository-/ 
 
+Visita el roadmap: https://roadmap.sh/projects/github-random-repo/solutions?u=66e06bceee0aa6b8517157d8 
+
+
+
 
