@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Buscador de repositorios en GitHub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Buscador de repositorios en GitHub</h1>
+
+  <form id="formulario-busqueda">
+    <label for="lenguaje">Selecciona un lenguaje de programación:</label>
+    <select
+      id="lenguaje"><!-- Se cargan las opciones de lenguajes desde el archivo lenguajes.JSON o desde el link --></select>
+    <button type="button" id="buscar-repositorio">Buscar repositorio</button>
+    <div id="repositorio-info">
+      <p id="repositorio-mensajeInicial">Por favor seleccione un lenguaje...</p>
+      <h2 id="repositorio-nombre"></h2>
+      <p id="repositorio-descripcion"></p>
+      <p id="repositorio-estrellas"></p>
+      <p id="repositorio-bifurcaciones"></p>
+      <p id="repositorio-problemas"></p>
+      <div id="error-message" style="display: none; color: white;"></div>
+    </div>
+    <button id="refrescar-busqueda">Refrescar búsqueda</button>
+  </form>
+
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>

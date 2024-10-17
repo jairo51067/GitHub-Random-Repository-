@@ -1,0 +1,160 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #f4f4f4; /* Color de fondo más claro */
+  font-family: 'Poppins', sans-serif; /* Fuente principal */
+  font-size: 16px;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  color: #333; /* Color de texto más oscuro */
+  font-size: 2.5em; /* Aumentar tamaño de texto */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra para el título */
+}
+
+#formulario-busqueda {
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  max-width: 550px;
+  background-color: #ffffff; /* Fondo blanco para el formulario */
+  border-radius: 15px; /* Bordes más redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más suave */
+  transition: transform 0.3s ease; /* Efecto de transición */
+}
+
+#formulario-busqueda:hover {
+  transform: scale(1.02); /* Efecto de aumento al pasar el ratón */
+}
+
+#formulario-busqueda select {
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1em; /* Tamaño de fuente más grande */
+  font-family: 'Roboto', sans-serif; /* Fuente para el select */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Agregar transición para sombra */
+}
+
+#formulario-busqueda select:focus {
+  border-color: #8564db; /* Color de borde al enfocar */
+  outline: none; /* Quitar el contorno por defecto */
+  box-shadow: 0 0 5px rgba(133, 100, 219, 0.5); /* Sombra al enfocar */
+}
+
+#formulario-busqueda button {
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  border: none; /* Quitar borde */
+  background-color: #8564db; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  font-size: 1em;
+  font-family: 'Poppins', sans-serif; /* Fuente para el botón */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Efecto de transición */
+}
+
+#formulario-busqueda button:hover {
+  background-color: #6a4b9a; /* Color de fondo al pasar el ratón */
+  transform: translateY(-2px); /* Efecto de desplazamiento */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra al pasar el ratón */
+}
+
+
+#repositorio-info {
+  margin: 20px auto;
+  width: 100%;
+  text-align: left;
+  min-height: 200px;
+  padding: 20px;
+  background-color: #f9f9f9; /* Fondo más claro */
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+#repositorio-info h2 {
+  color: #333;
+  font-size: 1.8em; /* Tamaño de texto para el título del repositorio */
+  font-family: 'Poppins', sans-serif; /* Fuente para el título */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra para el título del repositorio */
+}
+
+#repositorio-info p {
+  margin-bottom: 20px;
+  /* Espacio inferior */
+  font-size: 1.2em;
+  /* Tamaño de texto para los párrafos */
+  font-weight: 500;
+  /* Peso de letra para los párrafos */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra para los párrafos */
+  color: #555;
+  /* Color de texto más suave */
+  line-height: 1.5;
+  /* Espaciado entre líneas */
+  font-family: 'Roboto', sans-serif;
+  /* Fuente para los párrafos */
+}
+
+#error-message {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: start;
+  margin-top: 10px;
+  /* Espacio superior */
+}
+
+#loading-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.fa-star{
+  color: yellow;
+  margin-right: 5px;
+}
+
+.fa-code-fork{
+  color: #4286f4;
+  margin-right: 5px;
+}
+
+.fa-circle-exclamation{
+  color: red;
+  margin-right: 5px;
+}
+
+/* Media query para pantallas de 768px o menos */
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Media query para pantallas de 320px o menos */
+/* @media only screen and (max-width: 320px) {
+  body {
+    font-size: 14px;
+  }
+} */
