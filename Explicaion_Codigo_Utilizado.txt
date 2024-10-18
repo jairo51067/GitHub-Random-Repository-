@@ -1,0 +1,185 @@
+// Función para buscar repositorios por lenguaje // En esta función de búsqueda incluimos limpiar resultados antes de mostrar errores
+
+const buscarRepositorio = async (lenguaje) => {
+  const githubApiUrl = "https://api.github.com/search/repositories";
+  const pat = "Ingresa-tu-token"; // Reemplaza con tu token
+  const url = `${githubApiUrl}?q=language:${lenguaje}&sort=random&order=desc`;
+  const headers = {
+    Authorization: `Bearer ${pat}`,
+    "Content-Type": "application/json",
+  };
+
+  const timeout = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error("Timeout"));
+    }, 7000); // 7 segundos
+  });
+
+  try {
+    const respuesta = await Promise.race([fetch(url, { headers }), timeout]);
+    const datos = await respuesta.json();
+    console.log(datos); // Check the response data
+    if (datos.items.length === 0) {
+      throw new Error("No se encontraron repositorios");
+    }
+    return datos.items[0];
+  } catch (error) {
+    console.error(error);
+    mostrarError("No se encontraron repositorios o ocurrió un error");
+    return null; // Retornar null si hay un error
+  }
+};
+
+
+Explicación...
+Estructura de la Función
+
+	1. Definición de la Función:
+
+const buscarRepositorio = async (lenguaje) => {
+
+	.-La función es asíncrona (async), lo que significa que puede usar await para esperar 	resultados de promesas.
+	
+	.-Recibe un parámetro lenguaje, que se utilizará para filtrar los repositorios.
+
+
+	2. URL de la API:
+
+const githubApiUrl = "https://api.github.com/search/repositories";
+
+	.- Se define la URL base para realizar búsquedas de repositorios en GitHub.
+
+	
+	3. Token de Autenticación:
+
+const pat = "Ingresa-tu-token"; // Reemplaza con tu token 
+
+	.- Se establece un token personal de acceso (PAT) que se utiliza para autenticar las 	solicitudes a la API de GitHub.
+
+	
+	4. Construcción de la URL de Búsqueda:
+
+const url = `${githubApiUrl}?q=language:${lenguaje}&sort=random&order=desc`;
+
+	.- Se construye la URL de búsqueda, que incluye:
+		
+		q=language:${lenguaje}: Filtra los repositorios por el lenguaje especificado.
+		
+		sort=random&order=desc: Intenta ordenar los resultados de manera aleatoria 			(aunque sort=random no es un parámetro válido en la API de GitHub, lo que podría 		generar un error).
+
+	
+	5. Encabezados de la Solicitud:
+
+const headers = {
+  Authorization: `Bearer ${pat}`,
+  "Content-Type": "application/json",
+};
+
+	.- Se definen los encabezados para la solicitud, incluyendo la autorización con el token 	y el tipo de contenido.
+
+
+	6. Manejo de Timeout:
+
+const timeout = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error("Timeout"));
+  }, 7000); // 7 segundos
+});
+
+
+	.- Se crea una promesa que se rechaza después de 7 segundos si no se recibe respuesta.
+
+
+	7. Realización de la Solicitud:
+
+const respuesta = await Promise.race([fetch(url, { headers }), timeout]);
+
+	.- Se utiliza Promise.race para realizar la solicitud a la API y esperar la respuesta o 	el timeout, lo que ocurra primero.
+
+
+	8. Procesamiento de la Respuesta:
+
+const datos = await respuesta.json();
+console.log(datos); // Check the response data
+
+	.- Se convierte la respuesta en formato JSON y se imprime en la consola.
+
+
+	9. Verificación de Resultados:
+
+if (datos.items.length === 0) {
+  throw new Error("No se encontraron repositorios");
+}
+return datos.items[0];
+
+	.- Se verifica si hay elementos en datos.items. Si no hay, se lanza un error. Si hay, se 	devuelve el primer repositorio encontrado.
+
+
+	10. Manejo de Errores:
+
+} catch (error) {
+  console.error(error);
+  mostrarError("No se encontraron repositorios o ocurrió un error");
+  return null; // Retornar null si hay un error
+}
+
+
+	.- Se captura cualquier error que ocurra durante el proceso y se imprime en la consola. 	También se llama a mostrarError para informar al usuario y se retorna null.
+
+
+Resumen
+
+	.- La función buscarRepositorio busca repositorios en GitHub por un lenguaje específico y maneja errores y timeouts.
+	.- Utiliza la API de GitHub con autenticación mediante un token personal.
+	.- Intenta devolver un repositorio aleatorio, aunque la forma de ordenar aleatoriamente no es válida según la API. 
+
+
+/*************************************************************\
+
+	se puede modificar la función buscarRepositorio para que no utilice un token de autenticación. 
+	Sin embargo, es importante tener en cuenta que sin un token, las solicitudes a la API de GitHub estarán sujetas a límites de tasa más bajos. Esto significa que podrías hacer menos solicitudes en un período de tiempo determinado. 
+
+A continuación, te muestro cómo sería la función sin el token de autenticación:
+
+const buscarRepositorio = async (lenguaje) => {
+  const githubApiUrl = "https://api.github.com/search/repositories";
+  const url = `${githubApiUrl}?q=language:${lenguaje}&sort=stars&order=desc`; // Cambié 'random' a 'stars' para obtener resultados válidos
+  const headers = {
+    "Content-Type": "application/json",
+  };
+
+  const timeout = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error("Timeout"));
+    }, 7000); // 7 segundos
+  });
+
+  try {
+    const respuesta = await Promise.race([fetch(url, { headers }), timeout]);
+    const datos = await respuesta.json();
+    console.log(datos); // Verifica los datos de respuesta
+    if (datos.items.length === 0) {
+      throw new Error("No se encontraron repositorios");
+    }
+    return datos.items[0];
+  } catch (error) {
+    console.error(error);
+    mostrarError("No se encontraron repositorios o ocurrió un error");
+    return null; // Retornar null si hay un error
+  }
+};
+
+
+Cambios Realizados
+	1.-Eliminación del Token de Autenticación:
+
+	.- Se ha eliminado la línea que define el token de autenticación (pat) y la correspondiente cabecera de autorización.
+
+	2.-Cambio en el Parámetro de Ordenación:
+
+	.- He cambiado el parámetro de ordenación de random a stars, ya que sort=random no es un parámetro válido en la API de GitHub. Ahora, los resultados se 	ordenan por número de estrellas (sort=stars&order=desc), lo que es más útil y válido.
+Consideraciones
+
+	.- Límites de Tasa: Sin un token, estarás limitado a 60 solicitudes por hora desde una dirección IP pública. Con un token, puedes hacer hasta 5000 	solicitudes por hora.
+
+	.- Resultados Aleatorios: Si deseas obtener resultados aleatorios, necesitarías implementar una lógica adicional después de recibir los resultados, como 	seleccionar un elemento aleatorio del array datos.items.

@@ -31,14 +31,43 @@ fetch(
     });
   });
 
-// Función para buscar repositorios por lenguaje
-// Modificar la función de búsqueda para limpiar resultados antes de mostrar errores
+// // Función para buscar repositorios por lenguaje // En esta función de búsqueda incluimos limpiar resultados antes de mostrar errores
+// const buscarRepositorio = async (lenguaje) => {
+//   const githubApiUrl = "https://api.github.com/search/repositories";
+//   const pat = "Ingresa-tu-token"; // Reemplaza con tu token
+//   const url = `${githubApiUrl}?q=language:${lenguaje}&sort=random&order=desc`;
+//   const headers = {
+//     Authorization: `Bearer ${pat}`,
+//     "Content-Type": "application/json",
+//   };
+
+//   const timeout = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       reject(new Error("Timeout"));
+//     }, 7000); // 7 segundos
+//   });
+
+//   try {
+//     const respuesta = await Promise.race([fetch(url, { headers }), timeout]);
+//     const datos = await respuesta.json();
+//     console.log(datos); // Check the response data
+//     if (datos.items.length === 0) {
+//       throw new Error("No se encontraron repositorios");
+//     }
+//     return datos.items[0];
+//   } catch (error) {
+//     console.error(error);
+//     mostrarError("No se encontraron repositorios o ocurrió un error");
+//     return null; // Retornar null si hay un error
+//   }
+// }; 
+
+
+// Función para buscar repositorios por lenguaje // En esta función de búsqueda incluimos limpiar resultados antes de mostrar errores Y ADEMAS NO USAMOS EL TOKEN DE AUTENTIFICACION
 const buscarRepositorio = async (lenguaje) => {
   const githubApiUrl = "https://api.github.com/search/repositories";
-  const pat = "Ingresa-tu-token"; // Reemplaza con tu token
-  const url = `${githubApiUrl}?q=language:${lenguaje}&sort=random&order=desc`;
+  const url = `${githubApiUrl}?q=language:${lenguaje}&sort=stars&order=desc`; // Cambié 'random' a 'stars' para obtener resultados válidos
   const headers = {
-    Authorization: `Bearer ${pat}`,
     "Content-Type": "application/json",
   };
 
@@ -51,7 +80,7 @@ const buscarRepositorio = async (lenguaje) => {
   try {
     const respuesta = await Promise.race([fetch(url, { headers }), timeout]);
     const datos = await respuesta.json();
-    console.log(datos); // Check the response data
+    console.log(datos); // Verifica los datos de respuesta
     if (datos.items.length === 0) {
       throw new Error("No se encontraron repositorios");
     }
@@ -62,6 +91,8 @@ const buscarRepositorio = async (lenguaje) => {
     return null; // Retornar null si hay un error
   }
 };
+
+
 
 // Función para mostrar el mensaje de error
 const mostrarError = (mensaje) => {
