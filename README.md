@@ -3,7 +3,7 @@
 
 [Enlace al proyecto](https://jairo51067.github.io/GitHub-Random-Repository-/ )  
 
-![Imagen del proyecto](URL de la imagen)
+Imagen del proyecto
 <br>
 ![imagen-1](https://github.com/user-attachments/assets/5c42ee9d-30c4-45b3-9df3-b6246b1bcf0a)
 <br>
