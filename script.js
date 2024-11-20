@@ -31,6 +31,8 @@ fetch(
     });
   });
 
+
+// ** - 1 -
 // // Función para buscar repositorios por lenguaje // En esta función de búsqueda incluimos limpiar resultados antes de mostrar errores
 // const buscarRepositorio = async (lenguaje) => {
 //   const githubApiUrl = "https://api.github.com/search/repositories";
@@ -63,6 +65,7 @@ fetch(
 // }; 
 
 
+//  ** - 2 -
 // Función para buscar repositorios por lenguaje // En esta función de búsqueda incluimos limpiar resultados antes de mostrar errores Y ADEMAS NO USAMOS EL TOKEN DE AUTENTIFICACION
 const buscarRepositorio = async (lenguaje) => {
   const githubApiUrl = "https://api.github.com/search/repositories";

@@ -136,7 +136,7 @@ Resumen
 
 /*************************************************************\
 
-	se puede modificar la función buscarRepositorio para que no utilice un token de autenticación. 
+	Se puede modificar la función buscarRepositorio para que no utilice un token de autenticación. 
 	Sin embargo, es importante tener en cuenta que sin un token, las solicitudes a la API de GitHub estarán sujetas a límites de tasa más bajos. Esto significa que podrías hacer menos solicitudes en un período de tiempo determinado. 
 
 A continuación, te muestro cómo sería la función sin el token de autenticación:
