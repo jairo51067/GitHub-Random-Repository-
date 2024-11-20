@@ -10,7 +10,7 @@
 ![imagen-2](https://github.com/user-attachments/assets/4d9ca0a1-3425-464d-a1ec-6af29e8734f8)
 <br>
 ![imagen-3](https://github.com/user-attachments/assets/18e1ca1d-6f6c-43c0-9d9a-b22a2ebcc7a8)
-<br>
+
 Las imagenes corresponden a una busqueda aleatoria. Para que les funcione corectamente se debe agregar el token personal en el codigo, JavaScript.
 
 ## Descripción  
