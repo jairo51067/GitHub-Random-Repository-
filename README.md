@@ -11,7 +11,7 @@ Imagen del proyecto
 <br>
 ![imagen-3](https://github.com/user-attachments/assets/18e1ca1d-6f6c-43c0-9d9a-b22a2ebcc7a8)
 
-Las imagenes corresponden a una busqueda aleatoria. Para que les funcione corectamente se debe agregar el token personal en el codigo, JavaScript.
+Las imagenes corresponden a una busqueda aleatoria.
 
 ## Descripción  
 Este proyecto es una aplicación web interactiva que permite buscar repositorios en GitHub según el lenguaje de programación seleccionado. Los lenguajes se cargan dinámicamente desde un archivo JSON, y la información de los repositorios se obtiene mediante la API de búsqueda de GitHub.  
